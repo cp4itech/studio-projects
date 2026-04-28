@@ -5,14 +5,8 @@ metadata:
   namespace: echo-api
   version: '1.0'
   tags: []
-  description: ''
 spec:
   rules:
     - action: allow
       originList:
         - '*'
-      allowCredentials: false
-      exposeHeaders:
-        predefined: false
-        custom: ''
-        backend: false
