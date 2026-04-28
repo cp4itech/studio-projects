@@ -1,43 +1,38 @@
-swagger: '2.0'
+openapi: 3.0.4
 info:
-  title: Echo API
-  x-ibm-name: echo-api
-  description: Simple Echo API
-  version: 1.1.0
+  title: echo-api-nano
+  description: A service that returns the text passed in.
+  termsOfService: https://ibm.com/terms/
   contact:
     name: Ricky Moorhouse
-    email: moorh@uk.ibm.com
-host: $(catalog.host)
-schemes: []
-basePath: /public
-produces:
-  - application/json
-security: []
-parameters:
-  text:
-    name: text
-    type: string
-    required: false
-    in: query
-    description: Text passed in
-definitions:
-  responseObject:
-    properties:
-      text:
-        type: string
+    url: www.ibm.com
+    email: api-connect@ibm.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: '1'
+servers:
+  - url: https://apiconnect.automation.ibm.com
+externalDocs:
+  description: Find out more about IBM DataPower Nano Gateway
+  url: https://ibm.com
+tags:
+  - name: echo
+    description: Echo API
 paths:
   /echo:
     get:
+      description: Retrieve the details of your order.
+      operationId: getEcho
+      tags:
+        - echo
+      parameters:
+        - name: text
+          in: query
+          description: Text to echo
+          required: true
+          schema:
+            type: string
       responses:
         '200':
-          description: 200 OK
-          schema:
-            $ref: '#/definitions/responseObject'
-      parameters:
-        - $ref: '#/parameters/text'
-    parameters:
-      - type: string
-        name: text
-        in: query
-        description: Text to echo
-        required: true
+          description: Echo text provided
